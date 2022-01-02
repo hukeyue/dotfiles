@@ -81,8 +81,7 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'rust-lang/rust.vim'
 " No async support? Using ALE now.
-" Plug 'scrooloose/syntastic'
-Plug 'dense-analysis/ale'
+Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/gundo.vim'
 " Problems with fugitive, re-evalute when upstream fixes the issue
@@ -396,14 +395,14 @@ endif
 
 " Sets a font for the GUI
 if has("gui_gtk2") || has("gui_gtk3")
-  set guifont=Consolas\ For\ Powerline\ 10
+  set guifont=Consolas\ NF\ 10
 " For neovim-gtk
 elseif exists('g:GtkGuiLoaded')
   call rpcnotify(1, 'Gui', 'Font', 'Consolas For Powerline 10')
 elseif has("gui_macvim")
-  set guifont=Consolas\ For\ Powerline:h14
+  set guifont=Consolas\ NF:h14
 elseif has("gui_win32")
-  set guifont=Consolas\ For\ Powerline:h14
+  set guifont=Consolas\ NF:h14
 end
 
 " For neovim-gtk
@@ -487,7 +486,7 @@ au vimrc BufReadCmd *.epub call zip#Browse( expand( "<amatch>" ) )
 " of layout gives us Dvorak typing but Qwerty keyboard shortcuts.
 
 " our <leader> will be the space key
-let mapleader=" "
+let mapleader="\\"
 
 " our <localleader> will be the '-' key
 let maplocalleader="-"
@@ -914,14 +913,14 @@ let g:tagbar_sort = 0
 let g:tagbar_width = 60
 
 if has("gui_macvim")
-  let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+  let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
 endif
 
 " *OpenAutoClose is meant to be used for the usecase of 'open Tagbar, move
 " cursor there, move to entry, press enter, close window'. Differs from the
 " *Toggle version by moving the cursor to the window and closing the window once
 " an entry is selected.
-nnoremap <F3> :TagbarOpenAutoClose<cr>
+nnoremap <leader>t :TagbarOpenAutoClose<CR>
 nnoremap <F4> :TagbarToggle<cr><c-w>=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -963,8 +962,6 @@ let g:notes_directories = ['~/notes']
 "                                syntastic                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" OBSOLETE, but let's keep it for now just in case. See ALE below.
-
 let g:syntastic_error_symbol = '🛑'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_always_populate_loc_list = 1
@@ -980,46 +977,22 @@ let g:syntastic_mode_map = {
        \ "passive_filetypes": ["dart", "html"] }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                  ALE                                    "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Unlike syntastic, ALE supports async linting.
-" NOTE: Fills Vim's location list with errors/warnings, NOT the quickfix list!
-
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
-
-" We turn off everything except on-save because the other options add visible
-" latency (at least for Markdown, haven't investigated further).
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_save = 1
-
-" Note: Overriden in google vim settings
-let g:ale_linters = {
-\   'python': ['flake8'],
-\   'cpp': [],
-\}
-
-let g:ale_python_flake8_options = '--max-line-length=80 ' .
-      \ '--max-complexity=10 --ignore=E111,E114,E121,E125,E126,E127,E128,E129,' .
-      \ 'E131,E133,E201,E202,E203,E211,E221,E222,E241,E251,E261,E303,E402,W503'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              YouCompleteMe                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" see more https://ycm-core.github.io/YouCompleteMe/
 
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_min_num_identifier_candidate_chars = 4
 let g:ycm_extra_conf_globlist = ['~/repos/*']
 let g:ycm_filetype_specific_completion_to_disable = {'javascript': 1}
 let g:ycm_rust_src_path = $HOME . '/repos/rust/src'
-let g:ycm_clangd_binary_path = '/opt/clang/bin/clangd'
+let g:ycm_use_clangd = 0
+let g:ycm_clangd_binary_path = ''
+" let g:ycm_log_level = 'debug'
 
 " Also see the 'pumheight' vim option!
 let g:ycm_max_num_identifier_candidates = 10
-let g:ycm_clangd_uses_ycmd_caching = 1
+let g:ycm_clangd_uses_ycmd_caching = 0
 
 let g:ycm_filetype_blacklist = {
       \ 'tagbar': 1,
@@ -1036,13 +1009,14 @@ let g:ycm_filetype_blacklist = {
       \ 'gitcommit': 1
       \}
 
-nnoremap <leader>y :YcmForceCompileAndDiagnostics<cr>
-nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <leader>f :YcmForceCompileAndDiagnostics<cr>
+nnoremap <leader>F :YcmCompleter Format<cr>
+nnoremap <leader>j :YcmCompleter GoTo<CR>
 nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
 
 " Using <space> at the end to make it more visible and prevent trimming
-nnoremap <f6> :YcmCompleter RefactorRename<space>
+nnoremap <leader>r :YcmCompleter RefactorRename<space>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
