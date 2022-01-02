@@ -80,6 +80,9 @@ defaults write com.apple.dock autohide -bool true
 # Safari & WebKit                                                             #
 ###############################################################################
 
+# Prevent Safari from opening ‘safe’ files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
 # Disable auto-correct
 defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
 
