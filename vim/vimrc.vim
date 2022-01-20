@@ -1009,8 +1009,8 @@ let g:ycm_filetype_blacklist = {
       \ 'gitcommit': 1
       \}
 
-nnoremap <leader>f :YcmForceCompileAndDiagnostics<cr>
-nnoremap <leader>F :YcmCompleter Format<cr>
+" Not implemented
+" nnoremap <leader>cf :YcmCompleter Format<cr>
 nnoremap <leader>j :YcmCompleter GoTo<CR>
 nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
@@ -1018,6 +1018,19 @@ nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
 " Using <space> at the end to make it more visible and prevent trimming
 nnoremap <leader>r :YcmCompleter RefactorRename<space>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                Airline                                  "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:clang_format_fallback_style = 'Chromium'
+
+if has('python')
+  nnoremap <leader>cf :pyf ~/dotfiles/scripts/clang-format.py<cr>
+  inoremap <leader>cf :pyf ~/dotfiles/scripts/clang-format.py<cr>
+elseif has('python3')
+  nnoremap <leader>cf :py3f ~/dotfiles/scripts/clang-format.py<cr>
+  inoremap <leader>cf :py3f ~/dotfiles/scripts/clang-format.py<cr>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                Airline                                  "
