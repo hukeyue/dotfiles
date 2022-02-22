@@ -64,6 +64,8 @@ tags
 
 # Unix misc
 .*
+!.github
+!.gitattributes
 !.gitignore
 *~
 
