@@ -179,7 +179,6 @@ set completeopt=menu,menuone,longest
 set switchbuf=useopen,usetab
 
 " EDITOR SETTINGS
-set ignorecase          " case insensitive searching
 set smartcase           " but become case sensitive if you type uppercase characters
 " this can cause problems with other filetypes
 " see comment on this SO question http://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim/234578#234578
@@ -275,7 +274,7 @@ set gdefault            " this makes search/replace global by default
 " enforces a specified line-length and auto inserts hard line breaks when we
 " reach the limit; in Normal mode, you can reformat the current paragraph with
 " gqap.
-set textwidth=80
+set textwidth=120
 
 " this makes the color after the textwidth column highlighted
 set colorcolumn=+1
@@ -352,6 +351,47 @@ au vimrc FileType rust
       \ set tabstop=2 |
       \ set shiftwidth=2 |
       \ set softtabstop=2 |
+      \ set textwidth=80
+
+" override width
+au vimrc FileType c
+      \ set tabstop=2 |
+      \ set shiftwidth=2 |
+      \ set softtabstop=2 |
+      \ set textwidth=80
+
+au vimrc FileType cpp
+      \ set tabstop=2 |
+      \ set shiftwidth=2 |
+      \ set softtabstop=2 |
+      \ set textwidth=80
+
+au vimrc FileType objc
+      \ set tabstop=2 |
+      \ set shiftwidth=2 |
+      \ set softtabstop=2 |
+      \ set textwidth=80
+
+au vimrc FileType objcpp
+      \ set tabstop=2 |
+      \ set shiftwidth=2 |
+      \ set softtabstop=2 |
+      \ set textwidth=80
+
+" override golang
+au vimrc FileType go
+      \ set tabstop=8 |
+      \ set shiftwidth=8 |
+      \ set softtabstop=8 |
+      \ set noexpandtab |
+      \ set textwidth=80
+
+" override makefile
+au vimrc FileType makefile
+      \ set tabstop=8 |
+      \ set shiftwidth=8 |
+      \ set softtabstop=8 |
+      \ set noexpandtab |
       \ set textwidth=80
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -913,7 +953,7 @@ let g:tagbar_sort = 0
 let g:tagbar_width = 60
 
 if has("gui_macvim")
-  let g:tagbar_ctags_bin = '/opt/local/bin/ctags'
+  let g:tagbar_ctags_bin = '/opt/homebrew/bin/ctags'
 endif
 
 " *OpenAutoClose is meant to be used for the usecase of 'open Tagbar, move
