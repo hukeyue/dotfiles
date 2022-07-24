@@ -7,7 +7,7 @@ current_email=$(git config --global --get user.email)
 # if current_email is empty, then add an email
 if [[ -z "$current_email" ]]
 then
-    git config --global user.email "rwindz0@gmail.com"
+    git config --global user.email "hukeyue@hotmail.com"
 fi
 
 git config --global github.user chilledheart
