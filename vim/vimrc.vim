@@ -14,7 +14,9 @@ set pythondll=/dev/null
 " Correct python3/dyn
 " https://github.com/macvim-dev/macvim/wiki/Python-2.x-and-Python-3.x
 " set pythonthreehome=/Library/Frameworks/Python.framework/Versions/3.9
-set pythonthreedll=/Library/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib
+" set pythonthreedll=/Library/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib
+" export PATH="/opt/homebrew/opt/python@3.9/libexec/bin:${PATH}"
+set pythonthreedll=/opt/homebrew/opt/python@3.9/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Vundle configuration                           "
