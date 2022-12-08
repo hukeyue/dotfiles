@@ -17,6 +17,8 @@ set pythondll=/dev/null
 " set pythonthreedll=/Library/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib
 " export PATH="/opt/homebrew/opt/python@3.9/libexec/bin:${PATH}"
 set pythonthreedll=/opt/homebrew/opt/python@3.9/Frameworks/Python.framework/Versions/3.9/lib/libpython3.9.dylib
+" set pythonthreedll=C:\\Program\ Files\\Python310\\python310.dll
+" set pythonthreehome=C:\\Program\ Files\\Python310
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          Vundle configuration                           "
@@ -30,15 +32,17 @@ Plug 'vim-scripts/FuzzyFinder'
 Plug 'JesseKPhillips/d.vim'
 Plug 'vim-scripts/L9'
 " Plug 'Lokaltog/vim-easymotion'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'Raimondi/delimitMate'
 Plug 'vim-scripts/Rename'
-if has('python3')
-  Plug 'SirVer/ultisnips'
-endif
+" if has('python3')
+"   Plug 'SirVer/ultisnips'
+" endif
 Plug 'Valloric/ListToggle'
-Plug 'Valloric/MatchTagAlways'
+if has('python') || has('python3')
+  Plug 'Valloric/MatchTagAlways'
+endif
 Plug 'Valloric/Vim-Jinja2-Syntax'
 Plug 'Valloric/python-indent'
 Plug 'Valloric/vim-operator-highlight'
@@ -108,7 +112,7 @@ Plug 'xolox/vim-pyref'
 Plug 'xolox/vim-session'
 
 if has('python3')
-  Plug 'ycm-core/YouCompleteMe'
+  Plug 'Chilledheart/YouCompleteMe'
 endif
 
 call plug#end()
@@ -181,6 +185,7 @@ set completeopt=menu,menuone,longest
 set switchbuf=useopen,usetab
 
 " EDITOR SETTINGS
+" set ignorecase          " case insensitive searching
 set smartcase           " but become case sensitive if you type uppercase characters
 " this can cause problems with other filetypes
 " see comment on this SO question http://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim/234578#234578
@@ -437,10 +442,10 @@ endif
 
 " Sets a font for the GUI
 if has("gui_gtk2") || has("gui_gtk3")
-  set guifont=Consolas\ NF\ 10
+  set guifont=Consolas\ NF\ 14
 " For neovim-gtk
 elseif exists('g:GtkGuiLoaded')
-  call rpcnotify(1, 'Gui', 'Font', 'Consolas For Powerline 10')
+  call rpcnotify(1, 'Gui', 'Font', 'Consolas For Powerline 14')
 elseif has("gui_macvim")
   set guifont=Consolas\ NF:h14
 elseif has("gui_win32")
@@ -1051,8 +1056,8 @@ let g:ycm_filetype_blacklist = {
       \ 'gitcommit': 1
       \}
 
-" Not implemented
-" nnoremap <leader>cf :YcmCompleter Format<cr>
+nnoremap <leader>f :YcmForceCompileAndDiagnostics<cr>
+nnoremap <leader>F :YcmCompleter Format<cr>
 nnoremap <leader>j :YcmCompleter GoTo<CR>
 nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
@@ -1061,7 +1066,7 @@ nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>r :YcmCompleter RefactorRename<space>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                Airline                                  "
+"                                ClangFormat                              "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:clang_format_fallback_style = 'Chromium'
