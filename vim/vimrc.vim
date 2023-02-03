@@ -40,7 +40,7 @@ Plug 'vim-scripts/Rename'
 "   Plug 'SirVer/ultisnips'
 " endif
 Plug 'Valloric/ListToggle'
-if has('python') || has('python3')
+if (has('python') || has('python3')) && !has('win32unix')
   Plug 'Valloric/MatchTagAlways'
 endif
 Plug 'Valloric/Vim-Jinja2-Syntax'
@@ -111,7 +111,7 @@ Plug 'xolox/vim-notes'
 Plug 'xolox/vim-pyref'
 Plug 'xolox/vim-session'
 
-if has('python3')
+if has('python3') && !has('win32unix')
   Plug 'Chilledheart/YouCompleteMe'
 endif
 
