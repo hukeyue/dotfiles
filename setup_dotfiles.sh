@@ -18,6 +18,13 @@ then
   ln -s $script_dir/vim/vimrc.vim ~/.vimrc
 fi
 
+if [[ ! -d ~/.vim ]]
+then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  vim +PlugInstall
+fi
+
 mkdir -p $HOME/.config/nvim
 if [[ ! -a ~/.config/nvim/init.vim ]]
 then
