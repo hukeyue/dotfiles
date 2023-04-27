@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # This theme exists ONLY in our custom fork of oh-my-zsh
-ZSH_THEME="valloric"
+ZSH_THEME="robbyrussell"
 
 # Comment this out to disable weekly auto-update checks
 DISABLE_AUTO_UPDATE="true"
@@ -19,7 +19,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx pip fasd)
+plugins=(git pip fasd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,3 +95,5 @@ export GPG_TTY=$(tty)
 # added by travis gem
 [ -f /home/valloric/.travis/travis.sh ] && source /home/valloric/.travis/travis.sh
 
+# Set the GOPROXY environment variable
+export GOPROXY=https://goproxy.io,direct
