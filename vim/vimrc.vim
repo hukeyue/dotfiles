@@ -318,7 +318,7 @@ if has('unnamedplus')
   " '+' (and this option makes Vim use it by default) and the selection one as
   " '*'.
   " See :h 'clipboard' for details.
-  set clipboard+=unnamed
+  set clipboard=unnamedplus,unnamed
 else
   " Vim now also uses the selection system clipboard for default yank/paste.
   set clipboard+=unnamed
