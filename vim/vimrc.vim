@@ -358,32 +358,32 @@ au vimrc FileType rust
       \ set tabstop=2 |
       \ set shiftwidth=2 |
       \ set softtabstop=2 |
-      \ set textwidth=80
+      \ set textwidth=120
 
 " override width
 au vimrc FileType c
       \ set tabstop=2 |
       \ set shiftwidth=2 |
       \ set softtabstop=2 |
-      \ set textwidth=80
+      \ set textwidth=120
 
 au vimrc FileType cpp
       \ set tabstop=2 |
       \ set shiftwidth=2 |
       \ set softtabstop=2 |
-      \ set textwidth=80
+      \ set textwidth=120
 
 au vimrc FileType objc
       \ set tabstop=2 |
       \ set shiftwidth=2 |
       \ set softtabstop=2 |
-      \ set textwidth=80
+      \ set textwidth=120
 
 au vimrc FileType objcpp
       \ set tabstop=2 |
       \ set shiftwidth=2 |
       \ set softtabstop=2 |
-      \ set textwidth=80
+      \ set textwidth=120
 
 " override golang
 au vimrc FileType go
