@@ -96,4 +96,5 @@ export GPG_TTY=$(tty)
 [ -f /home/valloric/.travis/travis.sh ] && source /home/valloric/.travis/travis.sh
 
 # Set the GOPROXY environment variable
-export GOPROXY=https://goproxy.io,direct
+export GOPROXY=https://mirrors.aliyun.com/goproxy,direct
+export GOTOOLCHAIN=local
