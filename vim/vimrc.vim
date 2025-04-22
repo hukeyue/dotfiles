@@ -868,9 +868,9 @@ let g:PreviewMarkdownFences = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if executable('rg')
-  let g:ackprg = 'rg --vimgrep --no-heading'
+  let g:ackprg = 'rg --vimgrep --no-heading --no-ignore'
 elseif executable('ag')
-  let g:ackprg = "ag --nocolor --nogroup --column"
+  let g:ackprg = "ag --nocolor --nogroup --column --skip-vcs-ignores"
 elseif executable('ack-grep')
   let g:ackprg = "ack-grep --nocolor --nogroup --column"
 elseif executable('ack')
