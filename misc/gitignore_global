@@ -30,6 +30,10 @@
 *.rar
 *.tar
 *.zip
+*.bz2
+*.lzma
+*.xz
+*.zst
 
 # Logs and databases #
 ######################
