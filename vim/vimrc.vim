@@ -112,7 +112,7 @@ Plug 'xolox/vim-pyref'
 Plug 'xolox/vim-session'
 
 if has('python3') && !has('win32unix')
-  Plug 'Chilledheart/YouCompleteMe'
+  Plug 'hukeyue/YouCompleteMe'
 endif
 
 call plug#end()
