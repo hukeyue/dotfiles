@@ -10,6 +10,11 @@ script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # Ask for the administrator password upfront
 sudo -v
 
+# Don't ask backup when upgrade
+defaults write com.apple.iTunes DeviceBackupDisabled -bool YES
+#defaults write com.apple.iTunes AutomaticDeviceBackupsDisabled -bool true
+defaults write com.apple.AMPDevicesAgent AutomaticDeviceBackupsDisabled -bool true
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
